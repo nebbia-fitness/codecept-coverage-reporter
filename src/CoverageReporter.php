@@ -23,11 +23,6 @@ class CoverageReporter extends \Codeception\Coverage\Subscriber\Printer implemen
     public function printResult(\Codeception\Event\PrintResultEvent $e)
     {
         $output = new Output([]);
-
-        // export report to csv
-        $this->exportToCsv($output);
-
-        // coverage report
         $this->crapReport($output);
     }
 
@@ -120,37 +115,6 @@ class CoverageReporter extends \Codeception\Coverage\Subscriber\Printer implemen
         ;
         $tableSummary->render();
         $output->writeln('');
-    }
-
-    private function exportToCsv($output)
-    {
-        $coverageReport = codecept_output_dir() . 'coverage.xml';
-        if (file_exists($coverageReport)) {
-
-            // archive report file
-            $rows = [];
-            $coverateExport = codecept_output_dir() . 'summary_coverage_export.csv';
-            if (file_exists($coverateExport)) {
-                $csv = explode(PHP_EOL, trim(file_get_contents($coverateExport)));
-                foreach ($csv as $value) {
-                    $row = explode(';', $value);
-                    $rows[$row[0] . $row[1]] = $value . PHP_EOL;
-                }
-            }
-
-            // actual day report
-            $xml = simplexml_load_file($coverageReport);
-            foreach ($xml->project->metrics[0]->attributes() as $a => $b) {
-                if (!empty(trim($b))) {
-                    $key = date('Y-m-d') . $a;
-                    $rows[$key] = sprintf("%s;%s;%s%s", date('Y-m-d'), $a, trim($b), PHP_EOL);
-                }
-            }
-
-            file_put_contents($coverateExport, implode('', $rows));
-
-            $output->writeln("CSV report generated in {$coverateExport} \n");
-        }
     }
 
     /**
