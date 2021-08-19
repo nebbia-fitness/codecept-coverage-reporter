@@ -12,17 +12,47 @@ Where `comp(m)` is the cyclomatic complexity of method m, and `cov(m)` is the te
 
 > Generally speaking, you can lower your CRAP score either by adding automated tests or by refactoring to reduce complexity. Preferably both; and it’s a good idea to write the tests firsts so you can refactor more safely.
 
+### How is a crap load for a method calculated? 
+ 
+```php
+private function getCrapLoad($crapValue, $cyclomaticComplexity, $coveragePercent)
+{
+    $crapLoad = 0;
+    if ($crapValue >= $this->threshold) {
+        $crapLoad += $cyclomaticComplexity * (1.0 - $coveragePercent / 100);
+        $crapLoad += $cyclomaticComplexity / $this->threshold;
+    }
+
+    return $crapLoad;
+}
+```
+
+So, interpreting that, if the CRAP score for a method is above the threshold, 30, then for every point of uncovered complexity, add 1 for a test to cover that path. Then for every bit of complexity over the threshold, figure out the number of extract methods dividing in half that need to be done to get below the threshold.
+
+ps.: more info about [CRAP](http://www.crap4j.org/faq.html)
+
 #### Usage
 
-add CoverageReporter to your codeception.yml config file:
+1. Copy [`CoverageReporter.php`](https://github.com/nebbia-fitness/codecept-coverage-reporter/blob/master/src/CoverageReporter.php) into  `_support/Helper/` directory
+
+2. Add CoverageReporter to your `codeception.yml` config file:
 ```
 extensions:
     enabled:
         - \Helper\CoverageReporter
 ```
 
+3. Run codecept
+```
+codecept run -- unit
+```
+
 #### Example
 
+Good CRAP score:
+
 ![image](https://user-images.githubusercontent.com/6382002/130051733-5a6f18eb-012c-4ef8-96f0-1a12c5b26407.png)
+
+Bad crap score (need more effort):
 
 ![image](https://user-images.githubusercontent.com/6382002/130051887-0317c8f0-8743-4b88-bb6c-8fd878bbdf14.png)
