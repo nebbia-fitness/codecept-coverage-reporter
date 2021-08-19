@@ -23,8 +23,7 @@ extensions:
 
 #### Example
 
-![image](https://user-images.githubusercontent.com/6382002/130050189-312f2dad-e42f-411a-8c60-96f008d818c8.png)
+![image](https://user-images.githubusercontent.com/6382002/130051598-971830fd-b8f3-4c5f-87b1-1bf4db20dcd4.png)
 
-![image](https://user-images.githubusercontent.com/6382002/130050939-e260b0e9-855b-4c36-89bd-eafa6a71143a.png)
-
+![image](https://user-images.githubusercontent.com/6382002/130051411-9cd9e358-352b-4f3e-8b31-c55d46ab1eb7.png)
 
