@@ -69,7 +69,7 @@ class CoverageReporter extends \Codeception\Coverage\Subscriber\Printer implemen
                         $namespace = $class['package']['namespace'];
                     }
 
-                    if ($crapLoad > 0) {
+                    //if ($crapLoad > 0) {
                         $rows[] = [
                             $namespace . '\\' . $className . '::' . $methodName,
                             '<bold>' . $method['crap'] . '</bold>',
@@ -77,7 +77,7 @@ class CoverageReporter extends \Codeception\Coverage\Subscriber\Printer implemen
                             round($method['coverage'], 2),
                             $method['ccn']
                         ];
-                    }
+                    //}
                 }
             }
         }
