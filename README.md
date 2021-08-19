@@ -14,11 +14,11 @@ Where `comp(m)` is the cyclomatic complexity of method m, and `cov(m)` is the te
 
 #### Usage
 
+add CoverageReporter to your codeception.yml config file:
 ```
-class_name: UnitTester
-modules:
+extensions:
     enabled:
-        - \Helpser\CoverageReporter
+        - \Helper\CoverageReporter
 ```
 
 #### Example
