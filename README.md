@@ -14,4 +14,11 @@ Where `comp(m)` is the cyclomatic complexity of method m, and `cov(m)` is the te
 
 #### Usage
 
+```
+class_name: UnitTester
+modules:
+    enabled:
+        - \Helpser\CoverageReporter
+```
+
 #### Example
