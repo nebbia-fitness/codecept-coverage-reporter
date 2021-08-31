@@ -1,0 +1,23 @@
+{
+    "name": "nebbia-fitness/codecept-coverage-reporter",
+    "description": "Codecept coverage CRAP reporter.",
+    "homepage": "https://github.com/nebbia-fitness/codecept-coverage-reporter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lukas Mestan",
+            "email": "lukas.mestan@gmail.com"
+        }
+    ],
+
+    "require": {
+        "php": ">=7.0.0",
+        "codeception/codeception": "@dev"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Helper\\": "src"
+        }
+    }
+}
